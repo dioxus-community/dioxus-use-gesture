@@ -8,10 +8,9 @@ fn app(cx: Scope) -> Element {
         format!("width: 200px; height: 200px; background: red; transform: translate({x}px, {y}px);")
     });
 
-    let spring_ref_clone = spring_ref.clone();
     let drag_ref = use_drag(cx, move |state, x, y| match state {
-        DragState::Move => spring_ref_clone.set([x, y]),
-        DragState::End => spring_ref_clone.animate([0., 0.], Duration::from_millis(500)),
+        DragState::Move => spring_ref.set([x, y]),
+        DragState::End => spring_ref.animate([0., 0.], Duration::from_millis(500)),
     });
 
     render!(div {
