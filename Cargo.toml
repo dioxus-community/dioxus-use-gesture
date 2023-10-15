@@ -1,0 +1,13 @@
+[package]
+name = "dioxus-use-gesture"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dioxus = "0.4.0"
+dioxus-web = "0.4.0"
+dioxus-spring = { path = "../dioxus-spring" }
+web-sys = "0.3.64"
+wasm-bindgen = "0.2.87"
+log = "0.4.20"
+dioxus-logger = "0.4.1"
