@@ -20,6 +20,11 @@
 
 <br>
 
+Gesture interaction library for [Dioxus](https://dioxuslabs.com).
+
+Pairs great with [dioxus-spring](https://github.com/matthunz/dioxus-spring)!
+
+
 ```rust
 let spring_ref = use_spring_style(cx, [0f32, 0f32], |[x, y]| {
     format!("width: 200px; height: 200px; background: red; transform: translate({x}px, {y}px);")
