@@ -17,10 +17,12 @@ struct State {
     start: Option<(f32, f32)>,
 }
 
-pub fn use_drag<'a, T>(cx: Scope<'a, T>, f: impl FnMut(DragState, f32, f32) + 'a) -> UseDrag {
+pub fn use_drag<'a, T>(cx: Scope<'a, T>, on_drag: impl FnMut(DragState, f32, f32) + 'a) -> UseDrag {
     let state_ref = use_ref(cx, || State::default());
 
-    let handler_cell: Rc<RefCell<dyn FnMut(DragState, f32, f32) + 'a>> = Rc::new(RefCell::new(f));
+    // Safety: handlers are dropped before `cx`
+    let handler_cell: Rc<RefCell<dyn FnMut(DragState, f32, f32) + 'a>> =
+        Rc::new(RefCell::new(on_drag));
     let handler_cell: Rc<RefCell<dyn FnMut(DragState, f32, f32) + 'static>> =
         unsafe { mem::transmute(handler_cell) };
 
@@ -48,17 +50,7 @@ pub fn use_drag<'a, T>(cx: Scope<'a, T>, f: impl FnMut(DragState, f32, f32) + 'a
                         );
                     }
                 }));
-                element
-                    .add_event_listener_with_callback(
-                        "pointermove",
-                        state
-                            .on_pointer_move
-                            .as_ref()
-                            .unwrap()
-                            .as_ref()
-                            .unchecked_ref(),
-                    )
-                    .unwrap();
+                add_listener(element, "pointermove", &state.on_pointer_move);
 
                 let callback_state_ref = state_ref_clone.clone();
                 let callback_mounted = mounted.clone();
@@ -75,17 +67,7 @@ pub fn use_drag<'a, T>(cx: Scope<'a, T>, f: impl FnMut(DragState, f32, f32) + 'a
                         event.client_y() as f32 - rect.top() as f32,
                     ));
                 }));
-                element
-                    .add_event_listener_with_callback(
-                        "pointerdown",
-                        state
-                            .on_pointer_down
-                            .as_ref()
-                            .unwrap()
-                            .as_ref()
-                            .unchecked_ref(),
-                    )
-                    .unwrap();
+                add_listener(element, "pointerdown", &state.on_pointer_down);
 
                 let callback_state_ref = state_ref_clone.clone();
                 state.on_pointer_up = Some(Closure::new(move |event: web_sys::PointerEvent| {
@@ -96,17 +78,7 @@ pub fn use_drag<'a, T>(cx: Scope<'a, T>, f: impl FnMut(DragState, f32, f32) + 'a
                     );
                     callback_state_ref.write().start.take();
                 }));
-                element
-                    .add_event_listener_with_callback(
-                        "pointerup",
-                        state
-                            .on_pointer_up
-                            .as_ref()
-                            .unwrap()
-                            .as_ref()
-                            .unchecked_ref(),
-                    )
-                    .unwrap();
+                add_listener(element, "pointerup", &state.on_pointer_up);
             }
         },
     );
@@ -130,6 +102,16 @@ pub fn use_drag<'a, T>(cx: Scope<'a, T>, f: impl FnMut(DragState, f32, f32) + 'a
     UseDrag {
         element_ref: state_ref.clone(),
     }
+}
+
+fn add_listener(
+    element: &web_sys::Element,
+    name: &str,
+    cell: &Option<Closure<dyn FnMut(web_sys::PointerEvent)>>,
+) {
+    element
+        .add_event_listener_with_callback(name, cell.as_ref().unwrap().as_ref().unchecked_ref())
+        .unwrap();
 }
 
 fn remove_listener(
