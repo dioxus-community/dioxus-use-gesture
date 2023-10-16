@@ -1,4 +1,24 @@
-# dioxus-use-gesture
+<div align="center">
+<h1>Dioxus use_gesture</h1>
+ <a href="https://crates.io/crates/dioxus-use-gesture">
+    <img src="https://img.shields.io/crates/v/dioxus-use-gesture?style=flat-square"
+    alt="Crates.io version" />
+  </a>
+  <a href="https://docs.rs/dioxus-use-gesture/latest/dioxus-use-gesture">
+    <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
+      alt="docs.rs docs" />
+  </a>
+   <a href="https://github.com/matthunz/dioxus-use-gesture/actions">
+    <img src="https://github.com/matthunz/dioxus-use-gesture/actions/workflows/ci.yml/badge.svg"
+      alt="CI status" />
+  </a>
+</div>
+
+<div align="center">
+ <a href="https://github.com/matthunz/dioxus-use-gesture/tree/main/examples">Examples</a>
+</div>
+
+<br>
 
 ```rust
 let spring_ref = use_spring_style(cx, [0f32, 0f32], |[x, y]| {
