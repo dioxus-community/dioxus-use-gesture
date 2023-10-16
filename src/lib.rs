@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 use std::{mem, rc::Rc};
 use wasm_bindgen::{prelude::Closure, JsCast};
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum DragState {
     Move,
     End,
