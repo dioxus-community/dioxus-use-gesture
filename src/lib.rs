@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use std::{mem, rc::Rc};
+use std::rc::Rc;
 use wasm_bindgen::{prelude::Closure, JsCast};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -17,14 +17,9 @@ struct State {
     start: Option<(f32, f32)>,
 }
 
-pub fn use_drag<'a, T>(cx: Scope<'a, T>, on_drag: impl FnMut(DragState, f32, f32) + 'a) -> UseDrag {
+pub fn use_drag<T>(cx: Scope<T>, on_drag: impl FnMut(DragState, f32, f32) + 'static) -> UseDrag {
     let state_ref = use_ref(cx, || State::default());
-
-    // Safety: handlers are dropped before `cx`
-    let handler_cell: Rc<RefCell<dyn FnMut(DragState, f32, f32) + 'a>> =
-        Rc::new(RefCell::new(on_drag));
-    let handler_cell: Rc<RefCell<dyn FnMut(DragState, f32, f32) + 'static>> =
-        unsafe { mem::transmute(handler_cell) };
+    let handler_cell = Rc::new(RefCell::new(on_drag));
 
     let state_ref_clone = state_ref.clone();
     use_effect(
