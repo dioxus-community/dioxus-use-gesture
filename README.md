@@ -4,7 +4,7 @@
     <img src="https://img.shields.io/crates/v/dioxus-use-gesture?style=flat-square"
     alt="Crates.io version" />
   </a>
-  <a href="https://docs.rs/dioxus-use-gesture/latest/dioxus-use-gesture">
+  <a href="https://docs.rs/dioxus-use-gesture/latest/dioxus_use_gesture/">
     <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
       alt="docs.rs docs" />
   </a>
@@ -19,6 +19,11 @@
 </div>
 
 <br>
+
+Gesture interaction library for [Dioxus](https://dioxuslabs.com).
+
+Pairs great with [dioxus-spring](https://github.com/matthunz/dioxus-spring)!
+
 
 ```rust
 let spring_ref = use_spring_style(cx, [0f32, 0f32], |[x, y]| {
