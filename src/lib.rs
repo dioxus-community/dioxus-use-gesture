@@ -22,6 +22,9 @@ pub fn use_drag<T>(cx: Scope<T>, on_drag: impl FnMut(DragState, f32, f32) + 'sta
     let handler_cell = Rc::new(RefCell::new(on_drag));
 
     let state_ref_clone = state_ref.clone();
+
+    let rt = Runtime::current().unwrap();
+
     use_effect(
         cx,
         &state_ref.read().mounted.is_some(),
@@ -36,7 +39,11 @@ pub fn use_drag<T>(cx: Scope<T>, on_drag: impl FnMut(DragState, f32, f32) + 'sta
 
                 let callback_state_ref = state_ref_clone.clone();
                 let handler_cell_clone = handler_cell.clone();
+                let rt_clone = rt.clone();
                 state.on_pointer_move = Some(Closure::new(move |event: web_sys::PointerEvent| {
+                    log::info!("move!");
+
+                    let g = RuntimeGuard::new(rt_clone.clone());
                     if let Some((start_x, start_y)) = callback_state_ref.read().start {
                         handler_cell_clone.borrow_mut()(
                             DragState::Move,
@@ -44,34 +51,42 @@ pub fn use_drag<T>(cx: Scope<T>, on_drag: impl FnMut(DragState, f32, f32) + 'sta
                             event.client_y() as f32 - start_y,
                         );
                     }
+                    drop(g);
                 }));
                 add_listener(element, "pointermove", &state.on_pointer_move);
 
                 let callback_state_ref = state_ref_clone.clone();
                 let callback_mounted = mounted.clone();
+                let rt_clone = rt.clone();
                 state.on_pointer_down = Some(Closure::new(move |event: web_sys::PointerEvent| {
+                    let g = RuntimeGuard::new(rt_clone.clone());
                     let element = callback_mounted
                         .get_raw_element()
                         .unwrap()
                         .downcast_ref::<web_sys::Element>()
                         .unwrap();
+
+             
                     let rect = element.get_bounding_client_rect();
 
                     callback_state_ref.write().start = Some((
                         event.client_x() as f32 - rect.left() as f32,
                         event.client_y() as f32 - rect.top() as f32,
                     ));
+                    drop(g);
                 }));
                 add_listener(element, "pointerdown", &state.on_pointer_down);
 
                 let callback_state_ref = state_ref_clone.clone();
                 state.on_pointer_up = Some(Closure::new(move |event: web_sys::PointerEvent| {
+                    let g = RuntimeGuard::new(rt.clone());
                     handler_cell.borrow_mut()(
                         DragState::End,
                         event.client_x() as _,
                         event.client_y() as _,
                     );
                     callback_state_ref.write().start.take();
+                    drop(g);
                 }));
                 add_listener(element, "pointerup", &state.on_pointer_up);
             }

@@ -14,6 +14,8 @@ fn app(cx: Scope) -> Element {
         DragState::End => spring_ref_clone.animate([0., 0.], Duration::from_millis(500)),
     });
 
+    log::info!("render");
+
     render!(div {
         onmounted: move |event| {
             spring_ref.mount(event.data.clone());
