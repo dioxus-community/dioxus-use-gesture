@@ -9,7 +9,7 @@ license = "MIT OR Apache-2.0"
 dioxus = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
 dioxus-web = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
 dioxus-signals = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
-dioxus-spring = { path = "../dioxus-spring" }
+dioxus-spring = { git = "https://github.com/matthunz/dioxus-spring" }
 web-sys = "0.3.64"
 wasm-bindgen = "0.2.87"
 log = "0.4.20"

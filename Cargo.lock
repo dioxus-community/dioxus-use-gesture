@@ -192,12 +192,25 @@ name = "dioxus"
 version = "0.4.2"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
- "dioxus-core",
- "dioxus-core-macro",
- "dioxus-hooks",
- "dioxus-hot-reload",
- "dioxus-html",
- "dioxus-rsx",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-core-macro 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-hooks 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-hot-reload 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-html 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+]
+
+[[package]]
+name = "dioxus"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-core-macro 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-hooks 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-hot-reload 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-html 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
 ]
 
 [[package]]
@@ -217,13 +230,42 @@ dependencies = [
 ]
 
 [[package]]
+name = "dioxus-core"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "bumpalo",
+ "futures-channel",
+ "futures-util",
+ "longest-increasing-subsequence",
+ "rustc-hash",
+ "serde",
+ "slab",
+ "smallbox",
+ "tracing",
+]
+
+[[package]]
 name = "dioxus-core-macro"
 version = "0.4.2"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
  "constcat",
- "dioxus-core",
- "dioxus-rsx",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "dioxus-core-macro"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "constcat",
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "proc-macro2",
  "quote",
  "syn",
@@ -240,7 +282,20 @@ name = "dioxus-hooks"
 version = "0.4.2"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
- "dioxus-core",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-debug-cell",
+ "futures-channel",
+ "slab",
+ "thiserror",
+ "tracing",
+]
+
+[[package]]
+name = "dioxus-hooks"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "dioxus-debug-cell",
  "futures-channel",
  "slab",
@@ -253,9 +308,22 @@ name = "dioxus-hot-reload"
 version = "0.4.2"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
- "dioxus-core",
- "dioxus-html",
- "dioxus-rsx",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-html 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "interprocess-docfix",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "dioxus-hot-reload"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-html 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-rsx 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "interprocess-docfix",
  "serde",
  "serde_json",
@@ -268,7 +336,26 @@ source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-r
 dependencies = [
  "async-channel",
  "async-trait",
- "dioxus-core",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "enumset",
+ "euclid",
+ "keyboard-types",
+ "serde",
+ "serde-value",
+ "serde_json",
+ "serde_repr",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
+name = "dioxus-html"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "async-channel",
+ "async-trait",
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "enumset",
  "euclid",
  "keyboard-types",
@@ -293,6 +380,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "dioxus-interpreter-js"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "js-sys",
+ "sledgehammer_bindgen",
+ "sledgehammer_utils",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
 name = "dioxus-logger"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -307,7 +406,18 @@ name = "dioxus-rsx"
 version = "0.4.2"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
- "dioxus-core",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "dioxus-rsx"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "proc-macro2",
  "quote",
  "syn",
@@ -318,8 +428,19 @@ name = "dioxus-signals"
 version = "0.0.0"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
 dependencies = [
- "dioxus-core",
- "generational-box",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "generational-box 0.0.0 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "simple_logger",
+ "tracing",
+]
+
+[[package]]
+name = "dioxus-signals"
+version = "0.0.0"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "generational-box 0.0.0 (git+https://github.com/dioxuslabs/dioxus)",
  "simple_logger",
  "tracing",
 ]
@@ -327,12 +448,13 @@ dependencies = [
 [[package]]
 name = "dioxus-spring"
 version = "0.1.0"
+source = "git+https://github.com/matthunz/dioxus-spring#355eaa600ebcadb7eb2f79ff1f3e77d21c0089c0"
 dependencies = [
  "async-channel",
- "dioxus",
+ "dioxus 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "dioxus-logger",
- "dioxus-signals",
- "dioxus-web",
+ "dioxus-signals 0.0.0 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-web 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "futures",
  "interpolation",
  "js-sys",
@@ -345,11 +467,11 @@ dependencies = [
 name = "dioxus-use-gesture"
 version = "0.1.0"
 dependencies = [
- "dioxus",
+ "dioxus 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
  "dioxus-logger",
- "dioxus-signals",
+ "dioxus-signals 0.0.0 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
  "dioxus-spring",
- "dioxus-web",
+ "dioxus-web 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
  "log",
  "wasm-bindgen",
  "web-sys",
@@ -363,9 +485,33 @@ dependencies = [
  "async-channel",
  "async-trait",
  "console_error_panic_hook",
- "dioxus-core",
- "dioxus-html",
- "dioxus-interpreter-js",
+ "dioxus-core 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-html 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "dioxus-interpreter-js 0.4.2 (git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime)",
+ "futures-channel",
+ "futures-util",
+ "js-sys",
+ "rustc-hash",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "tracing",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+]
+
+[[package]]
+name = "dioxus-web"
+version = "0.4.2"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
+dependencies = [
+ "async-channel",
+ "async-trait",
+ "console_error_panic_hook",
+ "dioxus-core 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-html 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
+ "dioxus-interpreter-js 0.4.2 (git+https://github.com/dioxuslabs/dioxus)",
  "futures-channel",
  "futures-util",
  "js-sys",
@@ -541,6 +687,14 @@ dependencies = [
 name = "generational-box"
 version = "0.0.0"
 source = "git+https://github.com/ealmloff/dioxus?branch=fix-signals-outside-of-runtime#ce86aabf262d53cbf8cbf0a5cbb74630725b8970"
+dependencies = [
+ "bumpalo",
+]
+
+[[package]]
+name = "generational-box"
+version = "0.0.0"
+source = "git+https://github.com/dioxuslabs/dioxus#c7963a03440d5a050bf229f91665d60a0d108a8a"
 dependencies = [
  "bumpalo",
 ]
