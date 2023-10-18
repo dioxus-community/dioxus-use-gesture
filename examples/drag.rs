@@ -17,15 +17,11 @@ fn app(cx: Scope) -> Element {
         DragState::End => spring_ref.animate([0., 0.], Duration::from_millis(500)),
     });
 
-    log::info!("render");
-
     render!(div {
         onmounted: move |event| element_ref.set(Some(event.data.clone()))
     })
 }
 
 fn main() {
-    dioxus_logger::init(log::LevelFilter::Info).expect("failed to init logger");
-
     dioxus_web::launch(app)
 }

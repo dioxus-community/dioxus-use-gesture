@@ -12,5 +12,3 @@ dioxus-signals = { git = "https://github.com/ealmloff/dioxus", branch = "fix-sig
 dioxus-spring = { git = "https://github.com/matthunz/dioxus-spring" }
 web-sys = "0.3.64"
 wasm-bindgen = "0.2.87"
-log = "0.4.20"
-dioxus-logger = "0.4.1"
