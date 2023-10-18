@@ -94,7 +94,7 @@ pub fn use_drag<T>(cx: Scope<T>, on_drag: impl FnMut(DragState, f32, f32) + 'sta
     );
 
     let state_ref_clone = state_ref.clone();
-    use_on_unmount(cx, move || {
+    use_on_destroy(cx, move || {
         let mut state = state_ref_clone.write();
         if let Some(mounted) = state.mounted.clone() {
             let element = mounted
