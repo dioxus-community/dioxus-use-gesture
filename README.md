@@ -8,21 +8,21 @@
     <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
       alt="docs.rs docs" />
   </a>
-   <a href="https://github.com/matthunz/dioxus-use-gesture/actions">
-    <img src="https://github.com/matthunz/dioxus-use-gesture/actions/workflows/ci.yml/badge.svg"
+   <a href="https://github.com/dioxus-community/dioxus-use-gesture/actions">
+    <img src="https://github.com/dioxus-community/dioxus-use-gesture/actions/workflows/ci.yml/badge.svg"
       alt="CI status" />
   </a>
 </div>
 
 <div align="center">
- <a href="https://github.com/matthunz/dioxus-use-gesture/tree/main/examples">Examples</a>
+ <a href="https://github.com/dioxus-community/dioxus-use-gesture/tree/main/examples">Examples</a>
 </div>
 
 <br>
 
 Gesture interaction library for [Dioxus](https://dioxuslabs.com).
 
-Pairs great with [dioxus-spring](https://github.com/matthunz/dioxus-spring)!
+Pairs great with [dioxus-spring](https://github.com/dioxus-community/dioxus-spring)!
 
 
 ```rust
