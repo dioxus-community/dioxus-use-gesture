@@ -1,14 +1,13 @@
 [package]
 name = "dioxus-use-gesture"
 description = "Gesture interaction library for Dioxus"
-version = "0.1.0"
+version = "0.2.0-alpha.1"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-dioxus = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
-dioxus-web = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
-dioxus-signals = { git = "https://github.com/ealmloff/dioxus", branch = "fix-signals-outside-of-runtime" }
-dioxus-spring = { git = "https://github.com/matthunz/dioxus-spring" }
-web-sys = "0.3.64"
-wasm-bindgen = "0.2.87"
+dioxus = { version = "0.6.0-alpha.3", features = ["web"] }
+dioxus-spring = "0.3.0-alpha.4"
+dioxus-use-mounted = "0.3.0-alpha.4"
+web-sys = "0.3.72"
+wasm-bindgen = "0.2.95"
