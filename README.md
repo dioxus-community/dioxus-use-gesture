@@ -26,19 +26,19 @@ Pairs great with [dioxus-spring](https://github.com/dioxus-community/dioxus-spri
 
 
 ```rust
-let element_ref = use_signal(cx, || None);
+let element_ref = use_mounted();
 
-let (spring_ref, value_ref) = use_spring_signal(cx, [0f32, 0f32]);
-use_animated(cx, element_ref, value_ref, |[x, y]| {
+let (value_ref, spring_ref) = use_spring_signal([0f32, 0f32]);
+use_animated(element_ref, value_ref, |[x, y]| {
     format!("width: 200px; height: 200px; background: red; transform: translate({x}px, {y}px);")
 });
 
-use_drag(cx, element_ref, move |state, x, y| match state {
+use_drag(element_ref, move |state, x, y| match state {
     DragState::Move => spring_ref.set([x, y]),
     DragState::End => spring_ref.animate([0., 0.], Duration::from_millis(500)),
 });
 
-render!(div {
-    onmounted: move |event| element_ref.set(Some(event.data.clone()))
+rsx!(div {
+    onmounted: move |event| element_ref.onmounted(event)
 })
 ```
